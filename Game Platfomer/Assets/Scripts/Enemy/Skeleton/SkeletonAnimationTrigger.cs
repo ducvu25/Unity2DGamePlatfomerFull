@@ -15,7 +15,10 @@ public class SkeletonAnimationTrigger : MonoBehaviour
             foreach (var hit in collider2Ds)
             {
                 if (hit.GetComponent<Player>() != null)
-                    hit.GetComponent<Player>().AddDame(transform.parent.position, player.enemyInfor.GetDamage());
+                {
+                    player.stats.DoDamage(hit.GetComponent<Player>().stats);
+                    hit.GetComponent<Player>().AddDame(transform.position);
+                }
             }
         }
     }

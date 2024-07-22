@@ -33,7 +33,7 @@ public class Player : Entity
     public float holeFlyTime;
     public float holeVelocityY;
 
-
+    public PlayerStats stats;
     public PlayerStateMachine stateMachine { get; private set; }
     public PlayerIdleState idleState { get; private set; }
     public PlayerMoveState moveState { get; private set; }
@@ -48,12 +48,11 @@ public class Player : Entity
     public PlayerBlackHoleState blackHoleState { get; private set; }    
     public PlayerDeahState deahState { get; private set; }
     public PlayerSkillManager skillManager { get; private set; }
-    public PlayerStats playerInfor;
 
     protected override void Awake()
     {
         base.Awake();
-        playerInfor = GetComponent<PlayerStats>();
+        stats = GetComponent<PlayerStats>();
     }
     // Start is called before the first frame update
     protected override void Start()
@@ -142,15 +141,14 @@ public class Player : Entity
         }
         return false;
     }
-    public override void AddDame(Vector3 p, int _stats)
+    public override void AddDame(Vector3 p)
     {
-        base.AddDame(p, _stats);
+        base.AddDame(p);
         if ((p.x > transform.position.x && !facingRight) || (p.x < transform.position.x && facingRight))
             FlipX();
         stateMachine.ChangeState(hitState);
         rb.velocity = new Vector2(speedDash / 5 * (facingRight ? -1 : 1), jumpFoce / 5);
         isHit = true;
-        playerInfor.TakeDamage(_stats);
     }
 
     public GameObject GetSword()

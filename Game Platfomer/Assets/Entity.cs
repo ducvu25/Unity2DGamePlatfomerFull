@@ -76,7 +76,7 @@ public class Entity : MonoBehaviour
     {
         return Physics2D.OverlapCircleAll(attackCheck.position, attackCheckDistance);
     }
-    public virtual void AddDame(Vector3 p, int _stats)
+    public virtual void AddDame(Vector3 p)
     {
         //Debug.Log(value);
     }

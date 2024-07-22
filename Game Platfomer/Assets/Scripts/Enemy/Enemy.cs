@@ -7,7 +7,7 @@ public class Enemy : Entity
     public float speed;
     float defaultSpeed;
     [SerializeField] protected LayerMask playerCheckLm;
-    public Skeleton_Stats enemyInfor;
+    public EnemyStats stats;
     protected override void Awake()
     {
         base.Awake();
@@ -51,7 +51,7 @@ public class Enemy : Entity
             animator.speed = 1;
         }
     }
-    public bool isDead() => enemyInfor.GetHp() <= 0;
+    public bool isDead() => stats.GetHp() <= 0;
     public IEnumerator FreezeTimeFor(float time, float delay)
     {
         yield return new WaitForSeconds(delay);

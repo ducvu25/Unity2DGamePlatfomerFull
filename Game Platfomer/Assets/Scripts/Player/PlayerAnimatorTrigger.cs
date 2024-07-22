@@ -16,7 +16,12 @@ public class PlayerAnimatorTrigger : MonoBehaviour
             foreach(var hit in collider2Ds)
             {
                 if (hit.GetComponent<Enemy>() != null)
-                    hit.GetComponent<Enemy>().AddDame(transform.parent.position, player.playerInfor.GetDamage());
+                {
+                    EnemyStats enemyState = hit.GetComponent<EnemyStats>();
+                    player.stats.DoDamage(enemyState);
+                    hit.GetComponent<Enemy>().AddDame(player.transform.position);
+                }
+                    //hit.GetComponent<Enemy>().AddDame(transform.parent.position, player.playerInfor.GetDamage());
             }
         }
     }

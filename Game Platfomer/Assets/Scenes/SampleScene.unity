@@ -196,6 +196,8 @@ MonoBehaviour:
   isIgnited: 0
   isChilled: 0
   isShocked: 0
+  ailmentsDuration: 4
+  currentHealth: 0
 --- !u!114 &27037859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,7 +229,7 @@ MonoBehaviour:
   playerCheckLm:
     serializedVersion: 2
     m_Bits: 128
-  enemyInfor: {fileID: 0}
+  stats: {fileID: 0}
   randIdleState: 10
   randMoveState: 10
   playerCheckDistanceRact: 5.64
@@ -564,6 +566,8 @@ MonoBehaviour:
   isIgnited: 0
   isChilled: 0
   isShocked: 0
+  ailmentsDuration: 4
+  currentHealth: 0
 --- !u!114 &119553935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -595,7 +599,7 @@ MonoBehaviour:
   playerCheckLm:
     serializedVersion: 2
     m_Bits: 128
-  enemyInfor: {fileID: 0}
+  stats: {fileID: 0}
   randIdleState: 10
   randMoveState: 10
   playerCheckDistanceRact: 5.64
@@ -22776,7 +22780,7 @@ MonoBehaviour:
   velocityReturnSword: {x: 3, y: 4}
   holeFlyTime: 0.5
   holeVelocityY: 9
-  playerInfor: {fileID: 0}
+  stats: {fileID: 0}
 --- !u!4 &1446705943
 Transform:
   m_ObjectHideFlags: 0
@@ -22942,7 +22946,7 @@ MonoBehaviour:
     baseValue: 150
     buffs: 
   maxHealth:
-    baseValue: 1000
+    baseValue: 5
     buffs: 
   armor:
     baseValue: 20
@@ -22965,6 +22969,8 @@ MonoBehaviour:
   isIgnited: 0
   isChilled: 0
   isShocked: 0
+  ailmentsDuration: 4
+  currentHealth: 0
 --- !u!1 &1536501786
 GameObject:
   m_ObjectHideFlags: 0
@@ -23035,7 +23041,7 @@ MonoBehaviour:
   playerCheckLm:
     serializedVersion: 2
     m_Bits: 128
-  enemyInfor: {fileID: 0}
+  stats: {fileID: 0}
   randIdleState: 10
   randMoveState: 10
   playerCheckDistanceRact: 5.64
@@ -23176,6 +23182,8 @@ MonoBehaviour:
   isIgnited: 0
   isChilled: 0
   isShocked: 0
+  ailmentsDuration: 4
+  currentHealth: 0
 --- !u!1 &1554033795
 GameObject:
   m_ObjectHideFlags: 0
@@ -23253,6 +23261,8 @@ MonoBehaviour:
   isIgnited: 0
   isChilled: 0
   isShocked: 0
+  ailmentsDuration: 4
+  currentHealth: 0
 --- !u!114 &1554033797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23284,7 +23294,7 @@ MonoBehaviour:
   playerCheckLm:
     serializedVersion: 2
     m_Bits: 128
-  enemyInfor: {fileID: 0}
+  stats: {fileID: 0}
   randIdleState: 10
   randMoveState: 10
   playerCheckDistanceRact: 5.64

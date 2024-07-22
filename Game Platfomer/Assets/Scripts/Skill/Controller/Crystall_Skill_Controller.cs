@@ -71,7 +71,9 @@ public class Crystall_Skill_Controller : MonoBehaviour
         Collider2D[] collider2Ds = Physics2D.OverlapCircleAll(transform.position, circleCollider.radius);
         foreach(var hit in collider2Ds)
         {
-            hit.GetComponent<Enemy>()?.AddDame(transform.position, PlayerManager.instance.player.playerInfor.GetDamage());
+            EnemyStats enemyState = hit.GetComponent<EnemyStats>();
+            PlayerManager.instance.player.stats.DoDamage(enemyState);
+            hit.GetComponent<Enemy>().AddDame(transform.position);
         }
     }
 

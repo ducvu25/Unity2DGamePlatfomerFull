@@ -20,7 +20,6 @@ public class CharacterStats : MonoBehaviour
     public Stat armor; // giáp
     public Stat evasion; // né tránh
     public Stat magicResistance; // giáp phép
-    int hp;
 
     [Header("Magic stats")]
     public Stat fireDamage;
@@ -30,18 +29,49 @@ public class CharacterStats : MonoBehaviour
     public bool isIgnited; // chay
     public bool isChilled; // dong bang
     public bool isShocked; // choang
-    
+
+    [SerializeField] private float ailmentsDuration = 4;
+    private float ignitedTimer;
+    private float chilledTimer;
+    private float shockedTimer;
+
+    [SerializeField] int currentHealth;
+
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        hp = maxHealth.GetValue();
+        currentHealth = maxHealth.GetValue();
     }
     protected virtual void Update()
     {
 
     }
-
+    bool CanAvoidAttack(CharacterStats _targetStats)
+    {
+        int totalEvasion = _targetStats.evasion.GetValue() + _targetStats.agility.GetValue();
+        if (Random.Range(0, 100) < totalEvasion)
+        {
+            return true;
+        }
+        return false;
+    } 
+    int CheckTargetArmor(CharacterStats _targetStats, int totalDamage)
+    {
+        totalDamage = Mathf.Clamp(totalDamage - _targetStats.armor.GetValue(), 1, int.MaxValue);
+        return totalDamage;
+    }
+    public virtual void DoDamage(CharacterStats _targetStats)
+    {
+       if(CanAvoidAttack(_targetStats))
+        {
+            Debug.Log("Miss");
+            return;
+        }
+        int totalDamage = damage.GetValue() + strength.GetValue();
+        totalDamage = CheckTargetArmor(_targetStats, totalDamage);
+        _targetStats.TakeDamage(totalDamage);
+    }
     public virtual void TakeDamage(int value, bool magic = false)
     {
         if(Random.Range(0, 100) < evasion.GetValue() + agility.GetValue())
@@ -50,15 +80,15 @@ public class CharacterStats : MonoBehaviour
         }
         if (!magic)
         {
-            hp -= Mathf.Clamp(value - armor.GetValue(), 1, 1000);
+            currentHealth -= Mathf.Clamp(value - armor.GetValue(), 1, 1000);
         }
         else
         {
-            hp -= Mathf.Clamp(value - magicResistance.GetValue(), 1, 1000);
+            currentHealth -= Mathf.Clamp(value - magicResistance.GetValue(), 1, 1000);
         }
         
         //Debug.Log(hp);
-        if(hp <= 0)
+        if(currentHealth <= 0)
         {
             Die();
         }
@@ -68,7 +98,7 @@ public class CharacterStats : MonoBehaviour
     {
 
     }
-    public float GetHp() { return hp; }
+    public float GetHp() { return currentHealth; }
     public virtual int GetDamage()
     {
         int sum = damage.GetValue() + strength.GetValue();

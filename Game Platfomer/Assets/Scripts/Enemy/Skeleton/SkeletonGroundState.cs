@@ -22,7 +22,7 @@ public class SkeletonGroundState : EnemyState
     public override void Update()
     {
         base.Update();
-        if (((Skeleton)enemy).enemyInfor.GetHp() <= 0) return;
+        if (((Skeleton)enemy).stats.GetHp() <= 0) return;
         if (((Skeleton)enemy).IsFindPlayer())
         {
             stateMachine.SetState(((Skeleton)enemy).reactState);

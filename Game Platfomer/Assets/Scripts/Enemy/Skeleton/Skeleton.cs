@@ -36,7 +36,7 @@ public class Skeleton : Enemy
     protected override void Awake()
     {
         base.Awake();
-        enemyInfor = GetComponent<Skeleton_Stats>();
+        stats = GetComponent<EnemyStats>();
     }
     // Start is called before the first frame update
     protected override void Start()
@@ -99,16 +99,15 @@ public class Skeleton : Enemy
         }
         return false;
     }
-    public override void AddDame(Vector3 p, int _stats)
+    public override void AddDame(Vector3 p)
     {
-        base.AddDame(p, _stats);
-        if (enemyInfor.GetHp() <= 0) return;
+        base.AddDame(p);
+        if (stats.GetHp() <= 0) return;
         if ((p.x > transform.position.x && !facingRight) || (p.x < transform.position.x && facingRight))
             FlipX();
         stateMachine.SetState(hitState);
         rb.velocity = new Vector2(1.5f*(facingRight ? -1 : 1), 4.5f);
         isHit = true;
-        enemyInfor.TakeDamage(_stats);
     }
     public override void Die()
     {

@@ -97,7 +97,11 @@ public class Sword_Skill_Controller : MonoBehaviour
                 transform.position = Vector2.MoveTowards(transform.position, enemiesBouncing[indexEnemiesBouncing].transform.position, returnSwordSpeed * Time.deltaTime * 1.5f);
             else
             {
-                enemiesBouncing[indexEnemiesBouncing].transform.GetComponent<Enemy>().AddDame(transform.position, player.playerInfor.GetDamage());
+                EnemyStats enemyState = enemiesBouncing[indexEnemiesBouncing].transform.GetComponent<EnemyStats>();
+                player.stats.DoDamage(enemyState);
+                enemiesBouncing[indexEnemiesBouncing].transform.GetComponent<Enemy>().AddDame(player.transform.position);
+
+                //enemiesBouncing[indexEnemiesBouncing].transform.GetComponent<Enemy>().AddDame(transform.position, player.stats.GetDamage());
                 if(!checkRepeat)
                     StartCoroutine(enemiesBouncing[indexEnemiesBouncing].transform.GetComponent<Enemy>().FreezeTimeFor(freezeTime/3, 0.2f));
                 indexEnemiesBouncing++;
@@ -125,7 +129,9 @@ public class Sword_Skill_Controller : MonoBehaviour
                 if (hit.GetComponent<Enemy>() != null && !hit.GetComponent<Enemy>().isDead())
                 {
                     transform.position = Vector3.MoveTowards(transform.position, transform.position + new Vector3(spineDir * spineSpeed, 0, 0), spineSpeedTime*Time.deltaTime);
-                    hit.GetComponent<Enemy>().AddDame(transform.position, player.playerInfor.GetDamage());
+                    EnemyStats enemyState = hit.GetComponent<EnemyStats>();
+                    player.stats.DoDamage(enemyState);
+                    hit.GetComponent<Enemy>().AddDame(player.transform.position);
                 }
             }
             timeLast = Time.time;
@@ -232,7 +238,9 @@ public class Sword_Skill_Controller : MonoBehaviour
                                     SetRigidBody(collision);
                                     StartCoroutine(e.FreezeTimeFor(freezeTime, 0.2f));
                                 }
-                                e.AddDame(transform.position, player.playerInfor.GetDamage());
+                                EnemyStats enemyState = collision.GetComponent<EnemyStats>();
+                                player.stats.DoDamage(enemyState);
+                                collision.GetComponent<Enemy>().AddDame(player.transform.position);
                             }else
                                 SetRigidBody(collision);
                             break;
@@ -243,7 +251,11 @@ public class Sword_Skill_Controller : MonoBehaviour
                             {
                                 SetRigidBody(collision);
                                 if(collision.GetComponent<Enemy>() != null && !collision.GetComponent<Enemy>().isDead())
-                                    collision.GetComponent<Enemy>().AddDame(transform.position, player.playerInfor.GetDamage());
+                                {
+                                    EnemyStats enemyState = collision.GetComponent<EnemyStats>();
+                                    player.stats.DoDamage(enemyState);
+                                    collision.GetComponent<Enemy>().AddDame(player.transform.position);
+                                }
                             }
                             break;
                         }
@@ -259,7 +271,11 @@ public class Sword_Skill_Controller : MonoBehaviour
                             if(e != null && !e.isDead())
                             {
                                 StartCoroutine(e.FreezeTimeFor(freezeTime, 0.2f));
-                                e.AddDame(transform.position, player.playerInfor.GetDamage());
+                                {
+                                    EnemyStats enemyState = collision.GetComponent<EnemyStats>();
+                                    player.stats.DoDamage(enemyState);
+                                    collision.GetComponent<Enemy>().AddDame(player.transform.position);
+                                }
                             }
                             
                             break;

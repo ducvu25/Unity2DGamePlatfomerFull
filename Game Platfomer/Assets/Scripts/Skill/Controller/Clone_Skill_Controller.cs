@@ -72,7 +72,8 @@ public class Clone_Skill_Controller : MonoBehaviour
         {
             if (hit.GetComponent<Enemy>() != null && !hit.GetComponent<Enemy>().isDead())
             {
-                hit.GetComponent<Enemy>().AddDame(transform.position, PlayerManager.instance.player.playerInfor.GetDamage());
+                PlayerManager.instance.player.stats.DoDamage(hit.GetComponent<Enemy>().stats);
+                hit.GetComponent<Enemy>().AddDame(transform.position);
                 return;
             }
         }

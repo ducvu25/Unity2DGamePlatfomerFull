@@ -21,7 +21,7 @@ public class PlayerDeahState : PlayerState
     public override void Update()
     {
         base.Update();
-        if(player.playerInfor.GetHp() > 0)
+        if(player.stats.GetHp() > 0)
         {
             machine.ChangeState(player.idleState);
         }
