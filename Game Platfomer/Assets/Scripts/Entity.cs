@@ -23,6 +23,7 @@ public class Entity : MonoBehaviour
     [HideInInspector] public bool isAttack;
     [HideInInspector] public bool isHit;
 
+    public System.Action actionFlip;
     public Animator animator { get; private set; }
     public Rigidbody2D rb { get; private set; }
     public SpriteRenderer sr { get; private set; }
@@ -49,6 +50,8 @@ public class Entity : MonoBehaviour
     {
         facingRight = !facingRight;
         transform.Rotate(0, 180, 0);
+        if(actionFlip != null)
+            actionFlip();
     }
     public void FlipController(float _x)
     {
