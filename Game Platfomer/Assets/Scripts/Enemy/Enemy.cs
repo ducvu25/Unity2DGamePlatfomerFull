@@ -67,4 +67,17 @@ public class Enemy : Entity
     {
         gameObject.layer = 10;
     }
+    public override void SlowEntityBy(float _slowPercentage, float _slowDuration)
+    {
+        base.SlowEntityBy(_slowPercentage, _slowDuration);
+        Debug.Log(speed);
+        speed *= (1 -  _slowPercentage);
+        Debug.Log(speed);
+        Invoke("ReturnDefaultSpeed", _slowDuration);
+    }
+    protected override void ReturnDefaultSpeed()
+    {
+        base.ReturnDefaultSpeed();
+        speed = defaultSpeed;
+    }
 }

@@ -19,10 +19,8 @@ public class Stat
     public int GetValue()
     {
         int sum = baseValue;
-        foreach (var buff in buffs)
-        {
-            sum += buff;
-        }
+        for(int i = 0; buffs != null && i < buffs.Count; i++)
+            sum += buffs[i];
         return sum; 
     }
     public void SetDefaulValue(int value)

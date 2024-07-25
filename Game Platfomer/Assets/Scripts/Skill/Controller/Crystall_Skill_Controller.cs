@@ -44,7 +44,7 @@ public class Crystall_Skill_Controller : MonoBehaviour
             }
             else
             {
-                transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(maxSize, maxSize, maxSize), speed * Time.deltaTime);
+                transform.localScale = Vector3.MoveTowards(transform.localScale, new Vector3(maxSize, maxSize, maxSize), speed * Time.deltaTime);
             }
         }
         else
@@ -52,7 +52,7 @@ public class Crystall_Skill_Controller : MonoBehaviour
             if (!isAttack)
             {
                 //Debug.Log("ok");
-                transform.position = Vector3.Lerp(transform.position, enemyTrans.position, speedMove * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, enemyTrans.position, speedMove * Time.deltaTime);
                 if (Vector2.Distance(transform.position, enemyTrans.position) < 0.5f)
                 {
                     isAttack = true;
@@ -61,7 +61,7 @@ public class Crystall_Skill_Controller : MonoBehaviour
             }
             else
             {
-                transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(maxSize, maxSize, maxSize), speed * Time.deltaTime);
+                transform.localScale = Vector3.MoveTowards(transform.localScale, new Vector3(maxSize, maxSize, maxSize), speed * Time.deltaTime);
             }
         }
         
@@ -71,9 +71,12 @@ public class Crystall_Skill_Controller : MonoBehaviour
         Collider2D[] collider2Ds = Physics2D.OverlapCircleAll(transform.position, circleCollider.radius);
         foreach(var hit in collider2Ds)
         {
-            EnemyStats enemyState = hit.GetComponent<EnemyStats>();
-            PlayerManager.instance.player.stats.DoDamage(enemyState);
-            hit.GetComponent<Enemy>().AddDame(transform.position);
+            EnemyStats enemyState = hit.GetComponent<EnemyStats>(); 
+            if (enemyState != null)
+            {
+                PlayerManager.instance.player.stats.DoMagicalDamage(enemyState);// DoDamage(enemyState);
+                hit.GetComponent<Enemy>().AddDame(transform.position);
+            }
         }
     }
 

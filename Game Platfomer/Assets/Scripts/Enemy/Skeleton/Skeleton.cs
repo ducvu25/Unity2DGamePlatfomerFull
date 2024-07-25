@@ -77,7 +77,14 @@ public class Skeleton : Enemy
     {
         return base.IsGroundCheck();
     }
-
+    void OnBecameInvisible()
+    {
+        Debug.Log("Out");
+    }
+    private void OnBecameVisible()
+    {
+        Debug.Log("In");
+    }
     public override bool IsWallCheck()
     {
         return base.IsWallCheck();

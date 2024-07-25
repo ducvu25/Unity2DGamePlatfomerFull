@@ -33,6 +33,7 @@ public class Player : Entity
     public float holeFlyTime;
     public float holeVelocityY;
 
+    #region Machine
     public PlayerStats stats;
     public PlayerStateMachine stateMachine { get; private set; }
     public PlayerIdleState idleState { get; private set; }
@@ -48,6 +49,11 @@ public class Player : Entity
     public PlayerBlackHoleState blackHoleState { get; private set; }    
     public PlayerDeahState deahState { get; private set; }
     public PlayerSkillManager skillManager { get; private set; }
+    #endregion
+    // slow
+    float moveSpeedDefault;
+    float jumForceDefault;
+    float speedDashDefault;
 
     protected override void Awake()
     {
@@ -72,8 +78,12 @@ public class Player : Entity
         blackHoleState = new PlayerBlackHoleState(this, stateMachine, "Jump");
         deahState = new PlayerDeahState(this, stateMachine, "Deah");
         stateMachine.Initalize(idleState);
+
         facingRight = true;
         _jumpCount = 0;
+        moveSpeedDefault = moveSpeed;
+        jumForceDefault = jumpFoce;
+        speedDashDefault = speedDash;
 
         skillManager = PlayerSkillManager.instance;
     }
@@ -158,5 +168,21 @@ public class Player : Entity
     public void SetSword(GameObject sword)
     {
         goSword = sword;
+    }
+    public override void SlowEntityBy(float _slowPercentage, float _slowDuration)
+    {
+        base.SlowEntityBy(_slowPercentage, _slowDuration);
+        moveSpeed *= (1 - _slowPercentage); 
+        jumpFoce *= (1 - _slowPercentage);
+        speedDash *= (1 - _slowPercentage);
+
+        Invoke("ReturnDefaultSpeed", _slowDuration);
+    }
+    protected override void ReturnDefaultSpeed()
+    {
+        base.ReturnDefaultSpeed();
+        moveSpeed = moveSpeedDefault;
+        jumpFoce = jumForceDefault;
+        speedDash = speedDashDefault;
     }
 }

@@ -63,7 +63,14 @@ public class Entity : MonoBehaviour
         rb.velocity = new Vector2(x, y);
         FlipController(rb.velocity.x);
     }
-
+    public virtual void SlowEntityBy(float _slowPercentage, float _slowDuration)
+    {
+        animator.speed = (1 -  _slowPercentage);    
+    }
+    protected virtual void ReturnDefaultSpeed()
+    {
+        animator.speed = 1;
+    }
     #region Colision
     public virtual bool IsGroundCheck()
     {

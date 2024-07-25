@@ -5,9 +5,9 @@ using UnityEngine;
 public class EnemyStats : CharacterStats
 {
     protected Enemy enemy;
-    public override void TakeDamage(int value, bool magic = false)
+    public override void TakeDamage(int value)
     {
-        base.TakeDamage(value, magic);
+        base.TakeDamage(value);
     }
 
     protected override void Die()

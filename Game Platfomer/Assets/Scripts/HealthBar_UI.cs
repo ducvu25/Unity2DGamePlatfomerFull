@@ -21,8 +21,7 @@ public class HealthBar_UI : MonoBehaviour
         entity.actionFlip += Flip;
         stats.updateHP += UpdateSliderHealth;
 
-        slider.maxValue = stats.GetMaxHealthValue();
-        slider.value = slider.maxValue;
+        UpdateSliderHealth();
     }
     void UpdateSliderHealth()
     {
