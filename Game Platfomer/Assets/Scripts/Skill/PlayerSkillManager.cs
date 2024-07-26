@@ -10,6 +10,7 @@ public class PlayerSkillManager : MonoBehaviour
     public Sword_Skill sword_Skill;
     public Hole_Skill hole_Skill;
     public Crystal_Skill crystal_Skill;
+    public ThunderSkill thunder_Skill;
     private void Awake()
     {
         if(instance == null)
@@ -25,5 +26,6 @@ public class PlayerSkillManager : MonoBehaviour
         sword_Skill = GetComponent<Sword_Skill>();
         hole_Skill = GetComponent<Hole_Skill>();
         crystal_Skill = GetComponent<Crystal_Skill>();
+        thunder_Skill = GetComponent<ThunderSkill>();   
     }
 }

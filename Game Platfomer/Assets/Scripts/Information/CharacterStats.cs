@@ -24,10 +24,6 @@ public class CharacterStats : MonoBehaviour
     [Header("Magic stats")]
     public Stat fireDamage;
     public Stat iceDamage;
-
-    [SerializeField] GameObject goThunderStrike;
-    [SerializeField] float shockDis;
-
     public Stat lightingDamage;
 
     public bool isIgnited; // chay
@@ -125,8 +121,8 @@ public class CharacterStats : MonoBehaviour
         }
         int totalDamage = GetDamage();
         totalDamage = CheckTargetArmor(_targetStats, totalDamage);
-        _targetStats.TakeDamage(totalDamage);
-        //DoMagicalDamage(_targetStats);
+        //_targetStats.TakeDamage(totalDamage);
+        DoMagicalDamage(_targetStats);
     }
     public void SetIgniteDamage(int value) => igniteDamage = value;
     public virtual void TakeDamage(int value)
@@ -220,28 +216,6 @@ public class CharacterStats : MonoBehaviour
 
     private void HitShock()
     {
-        Collider2D[] collider2Ds = Physics2D.OverlapCircleAll(transform.position, shockDis);
-        Transform e = null;
-        float disMin = float.MaxValue;
-
-        foreach (var hit in collider2Ds)
-        {
-            float dis = Vector2.Distance(transform.position, hit.transform.position);
-            if (hit.GetComponent<Enemy>() != null && dis > 0.2 && dis < disMin)
-            {
-                e = hit.transform;
-                disMin = dis;
-            }
-        }
-
-        if (e == null)
-        {
-            e = transform;
-        }
-        if(e != null)
-        {
-            GameObject go = Instantiate(goThunderStrike, e.transform.position, Quaternion.identity);
-            go.transform.GetComponent<ThunderStrikeController>().SetValue(5, e.GetComponent<CharacterStats>());
-        }
+        PlayerSkillManager.instance.thunder_Skill.InitThuner(transform.position);
     }
 }

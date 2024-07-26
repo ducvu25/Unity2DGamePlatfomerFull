@@ -13,6 +13,7 @@ public class ThunderStrikeController : MonoBehaviour
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
+        Destroy(gameObject, 10);
     }
     public void SetValue(int value, CharacterStats targetStats)
     {
