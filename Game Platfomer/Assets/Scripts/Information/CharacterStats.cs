@@ -25,6 +25,7 @@ public class CharacterStats : MonoBehaviour
     public Stat fireDamage;
     public Stat iceDamage;
     public Stat lightingDamage;
+    [SerializeField] GameObject goEffectShow;
 
     public bool isIgnited; // chay
     public bool isChilled; // dong bang
@@ -70,14 +71,21 @@ public class CharacterStats : MonoBehaviour
 
         ignitedDamageTimer -= Time.deltaTime;
 
-        if(ignitedTimer < 0)
-            isIgnited = false;
-
-        if(chilledTimer < 0)
-            isChilled = false;
-
-        if (shockedTimer < 0)
+        if (ignitedTimer < 0 && isIgnited)
         {
+            goEffectShow.transform.GetChild(0).gameObject.SetActive(false);
+            isIgnited = false;
+        }
+
+        if (chilledTimer < 0 && isChilled)
+        {
+            goEffectShow.transform.GetChild(1).gameObject.SetActive(false);
+            isChilled = false;
+        }
+
+        if (shockedTimer < 0 && isShocked)
+        {
+            goEffectShow.transform.GetChild(2).gameObject.SetActive(false);
             isShocked = false;
         }
 
@@ -142,7 +150,7 @@ public class CharacterStats : MonoBehaviour
     }
     protected virtual void Die()
     {
-
+        entity.Die();
     }
     public float GetHp() { return currentHealth; }
     public virtual int GetDamage()
@@ -208,10 +216,20 @@ public class CharacterStats : MonoBehaviour
             }
             else
             {
-                if (GetComponent<Player>() != null) return;
-                HitShock();
+                if (GetComponent<Player>() == null) 
+                    HitShock();
             }
         }
+        UpdateEffectShow();
+    }
+    void UpdateEffectShow()
+    {
+        if(isIgnited)
+            goEffectShow.transform.GetChild(0).gameObject.SetActive(true);
+        else if(isChilled)
+            goEffectShow.transform.GetChild(1).gameObject.SetActive(true);
+        else if(isShocked)
+            goEffectShow.transform.GetChild(2).gameObject.SetActive(true);
     }
 
     private void HitShock()

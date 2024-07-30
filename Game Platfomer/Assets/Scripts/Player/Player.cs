@@ -153,12 +153,17 @@ public class Player : Entity
     }
     public override void AddDame(Vector3 p)
     {
-        base.AddDame(p);
+        //if (stats.GetHp() <= 0) return;
+            base.AddDame(p);
         if ((p.x > transform.position.x && !facingRight) || (p.x < transform.position.x && facingRight))
             FlipX();
         stateMachine.ChangeState(hitState);
         rb.velocity = new Vector2(speedDash / 5 * (facingRight ? -1 : 1), jumpFoce / 5);
         isHit = true;
+        if(stats.GetHp() <= 0)
+        {
+            Die();
+        }
     }
 
     public GameObject GetSword()
@@ -184,5 +189,11 @@ public class Player : Entity
         moveSpeed = moveSpeedDefault;
         jumpFoce = jumForceDefault;
         speedDash = speedDashDefault;
+    }
+    public override void Die()
+    {
+        base.Die();
+        stateMachine.ChangeState(deahState);
+        //enemy.Die();
     }
 }

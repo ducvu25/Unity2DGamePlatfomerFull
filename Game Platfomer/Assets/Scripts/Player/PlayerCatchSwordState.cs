@@ -14,6 +14,7 @@ public class PlayerCatchSwordState : PlayerState
     {
         base.Enter();
         goSword = player.GetSword();
+        if (goSword == null) return;
         if ((goSword.transform.position.x <player.transform.position.x && player.facingRight) || (goSword.transform.position.x > player.transform.position.x && !player.facingRight))
             player.FlipX();
         rb.velocity = (new Vector2(player.velocityReturnSword.x * (player.facingRight ? -1 : 1), player.velocityReturnSword.y));

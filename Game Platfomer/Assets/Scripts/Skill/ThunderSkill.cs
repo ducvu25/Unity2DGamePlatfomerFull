@@ -30,7 +30,7 @@ public class ThunderSkill : Skill
             }
         }
 
-        if (e == null && !e.GetComponent<Enemy>().isDead())
+        if (e == null && GetComponent<Enemy>() != null && !GetComponent<Enemy>().isDead())
         {   
             e = transform;
         }

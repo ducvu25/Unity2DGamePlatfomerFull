@@ -63,9 +63,9 @@ public class Enemy : Entity
         yield return new WaitForSeconds(time);
         FreezeTime(false);
     } 
-    public virtual void Die()
+    public override void Die()
     {
-        gameObject.layer = 10;
+        base.Die();
     }
     public override void SlowEntityBy(float _slowPercentage, float _slowDuration)
     {

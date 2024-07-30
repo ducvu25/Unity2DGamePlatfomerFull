@@ -108,4 +108,8 @@ public class Entity : MonoBehaviour
             sr.color = defaultColor;
         }
     }
+    public virtual void Die()
+    {
+        gameObject.layer = 10;
+    }
 }

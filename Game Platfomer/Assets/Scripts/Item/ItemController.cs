@@ -9,11 +9,16 @@ public class ItemController : MonoBehaviour
     Transform target;
 
     SpriteRenderer sp;
-    void Start()
+    private void OnValidate()
     {
         sp = GetComponentInChildren<SpriteRenderer>();
 
         sp.sprite = item._img;
+        gameObject.name = "Item: " + item._name;
+    }
+    void Start()
+    {
+        
     }
     private void Update()
     {
@@ -26,7 +31,7 @@ public class ItemController : MonoBehaviour
             }
             else
             {
-                Debug.Log("OK");
+                Inventory.instance.Add(item);
                 Destroy(gameObject);
             }
         }
