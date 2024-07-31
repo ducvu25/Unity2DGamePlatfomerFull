@@ -1,8 +1,9 @@
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class UI_ItemSlot : MonoBehaviour
+public class UI_ItemSlot : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerMoveHandler
 {
     InventoryItem item;
     [SerializeField] Image imgShow;
@@ -19,6 +20,21 @@ public class UI_ItemSlot : MonoBehaviour
         item = _item;
         imgShow.color = Color.white;
         imgShow.sprite = item.itemSO._img;
-        txtNumber.text = item.stackSize.ToString();
+        txtNumber.text = item.itemSO is ItemData_Equipment ? "" : item.stackSize.ToString();
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        Debug.Log("Click");
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        Debug.Log("UP");
+    }
+
+    public void OnPointerMove(PointerEventData eventData)
+    {
+        Debug.Log("move");
     }
 }
