@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d288fa061bbd52e4dabd2c4a217cf1d7, type: 3}
+  m_Name: Equipment_Flask 1
+  m_EditorClassIdentifier: 
+  _id: 2
+  _itemType: 1
+  _name: "Gi\xE0y chi\u1EBFn binh"
+  _description: "Gi\xE0y th\u01B0\u1EDDng d\xF9ng c\u1EE7a c\xE1c chi\u1EBFn binh"
+  _img: {fileID: 999485223, guid: be55291aae08d434db3da3b59db3ab4a, type: 3}
+  _price: 200
+  canUse: 0
+  _ratio: 5
+  _level: 0
+  _percentageModifier: 15
+  _equipmentType: 3
+  _strength: 2
+  _agility: 15
+  _intelligence: 0
+  _vitality: 2
+  _damage: 0
+  _critChance: 0
+  _critPower: 0
+  _maxHealth: 20
+  _armor: 40
+  _evasion: 5
+  _magicResistance: 25
+  _fireDamage: 0
+  _iceDamage: 0
+  _lightningDamage: 0

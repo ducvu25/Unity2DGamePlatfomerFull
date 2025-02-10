@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d288fa061bbd52e4dabd2c4a217cf1d7, type: 3}
+  m_Name: Equipment_Armor 1
+  m_EditorClassIdentifier: 
+  _id: 1
+  _itemType: 1
+  _name: "Gi\xE1p S\u1EAFt"
+  _description: "Gi\xE1p s\u1EAFt ch\u1EAFc ch\u1EAFn, cung c\u1EA5p b\u1EA3o v\u1EC7
+    t\u1ED1i \u01B0u cho ng\u01B0\u1EDDi m\u1EB7c."
+  _img: {fileID: -965925972, guid: be55291aae08d434db3da3b59db3ab4a, type: 3}
+  _price: 300
+  canUse: 0
+  _ratio: 5
+  _level: 0
+  _percentageModifier: 30
+  _equipmentType: 1
+  _strength: 5
+  _agility: 0
+  _intelligence: 0
+  _vitality: 10
+  _damage: 0
+  _critChance: 0
+  _critPower: 0
+  _maxHealth: 30
+  _armor: 30
+  _evasion: 5
+  _magicResistance: 5
+  _fireDamage: 0
+  _iceDamage: 0
+  _lightningDamage: 0

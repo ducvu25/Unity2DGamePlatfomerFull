@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d288fa061bbd52e4dabd2c4a217cf1d7, type: 3}
+  m_Name: Equipment_Weapon 3
+  m_EditorClassIdentifier: 
+  _id: 5
+  _itemType: 1
+  _name: "Tr\u01B0\u1EE3ng Ph\xE9p"
+  _description: "M\u1ED9t tr\u01B0\u1EE3ng huy\u1EC1n b\xED, gi\xFAp t\u0103ng c\u01B0\u1EDDng
+    s\u1EE9c m\u1EA1nh ph\xE9p thu\u1EADt."
+  _img: {fileID: 1284424274, guid: be55291aae08d434db3da3b59db3ab4a, type: 3}
+  _price: 1000
+  canUse: 0
+  _ratio: 5
+  _level: 0
+  _percentageModifier: 40
+  _equipmentType: 0
+  _strength: 0
+  _agility: 5
+  _intelligence: 20
+  _vitality: 5
+  _damage: 25
+  _critChance: 10
+  _critPower: 0
+  _maxHealth: 0
+  _armor: 0
+  _evasion: 15
+  _magicResistance: 10
+  _fireDamage: 5
+  _iceDamage: 10
+  _lightningDamage: 0

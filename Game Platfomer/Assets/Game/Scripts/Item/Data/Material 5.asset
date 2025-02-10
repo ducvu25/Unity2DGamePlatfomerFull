@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 539c6ac21f9c772429b42c178703dc64, type: 3}
+  m_Name: Material 5
+  m_EditorClassIdentifier: 
+  _id: 10
+  _itemType: 0
+  _name: "\u0110\u1ED3ng ti\u1EC1n dc"
+  _description: "Lo\u1EA1i ti\u1EC1n th\xF4ng h\xE0nh tr\xEAn th\u1EBF gi\u1EDBi."
+  _img: {fileID: -1920582380, guid: be55291aae08d434db3da3b59db3ab4a, type: 3}
+  _price: 0
+  canUse: 0
+  _ratio: 90
+  _strength: 0
+  _agility: 0
+  _intelligence: 0
+  _vitality: 0
+  _damage: 0
+  _critChance: 0
+  _critPower: 0
+  _maxHealth: 0
+  _armor: 5
+  _evasion: 0
+  _magicResistance: 0
+  _fireDamage: 0
+  _iceDamage: 0
+  _lightingDamage: 0
