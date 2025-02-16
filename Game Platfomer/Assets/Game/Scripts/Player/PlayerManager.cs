@@ -7,6 +7,7 @@ public class PlayerManager : MonoBehaviour
     public static PlayerManager instance;
     public Camera mainCamera;
     public Player player;
+    public List<ItemSO> bags = new List<ItemSO>();
 
     private void Awake()
     {
@@ -19,4 +20,5 @@ public class PlayerManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
 }

@@ -3,14 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum Type_Show_Item
+{
+    Infor,
+    Bag,
+    Shop
+}
 public class BtnEquiment : MonoBehaviour
 {
     [SerializeField] Image imgShow;
     [SerializeField] UiShowLevelOfStrength uiShowLevelOfStrength;
     [SerializeField] ItemSO item;
-
-    public void ShowItem(ItemSO _item)
+    Type_Show_Item typeShowItem;
+    public void ShowItem(ItemSO _item, Type_Show_Item _typeShowItem)
     {
+        typeShowItem = _typeShowItem;
         item = _item;
         if(item == null)
         {
@@ -30,17 +37,18 @@ public class BtnEquiment : MonoBehaviour
             uiShowLevelOfStrength.gameObject.SetActive(false);
         }
     }
-    public void HideItem()
-    {
-        transform.GetComponent<Button>().onClick.RemoveAllListeners();
-        uiShowLevelOfStrength.gameObject.SetActive(false);
-        imgShow.gameObject.SetActive(false);
-    }
+    //public void HideItem()
+    //{
+    //    transform.GetComponent<Button>().onClick.RemoveAllListeners();
+    //    uiShowLevelOfStrength.gameObject.SetActive(false);
+    //    imgShow.gameObject.SetActive(false);
+    //}
+    bool[,] valueShowTypeItems = { { true, false }, { false, false }, { false, true } };
     public void ShowItem()
     {
         if (item != null)
         {
-            GameManager.instance.uiManager.ShowItem(item, true);
+            GameManager.instance.uiManager.ShowItem(transform.position, item, valueShowTypeItems[(int)typeShowItem, 0], valueShowTypeItems[(int)typeShowItem, 1]);
         }
     }
 }

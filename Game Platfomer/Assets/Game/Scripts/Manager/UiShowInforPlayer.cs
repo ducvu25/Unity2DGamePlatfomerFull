@@ -58,5 +58,10 @@ public class UiShowInforPlayer : MonoBehaviour
         }
         
     }
-
+    public void Unequenment(EquipmentType _equipmentType)
+    {
+        int i = (int)_equipmentType;
+        PlayerManager.instance.player.stats.itemData[i] = null;
+        btnsShowEquentment[i].ShowItem(PlayerManager.instance.player.stats.itemData[i]);
+    }
 }

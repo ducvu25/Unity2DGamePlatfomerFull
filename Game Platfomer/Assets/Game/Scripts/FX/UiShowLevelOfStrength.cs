@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class UiShowLevelOfStrength : MonoBehaviour
 {
-    [SerializeField] Color[] colors;
     [SerializeField] float timeDelay = 0.5f;
     [SerializeField] float[] valueScale;
     [SerializeField] int lv;
@@ -15,12 +14,13 @@ public class UiShowLevelOfStrength : MonoBehaviour
     {
         SetColor(lv);
     }
-    public void SetColor(int lv)
+    public void SetColor(int _lv)
     {
+        lv = _lv;
         k = ((lv - 1) % 4) + 1;
         for (int i = 0; i < transform.childCount; i++)
         {
-            transform.GetChild(i).GetComponent<Image>().color = colors[lv];
+            transform.GetChild(i).GetComponent<Image>().color = GameValue.Instance.colorsLevelOfStrength[lv];
             transform.GetChild(i).localScale = Vector3.zero;
         }
     }

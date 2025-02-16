@@ -17,8 +17,10 @@ public class ToolShowItem : MonoBehaviour
     [SerializeField] GameObject btnSell;
     [SerializeField] GameObject btnThrowAway;
 
-    public void ShowItem(ItemSO item, bool isEqui = false, bool isShop = false)
+    ItemSO item;
+    public void ShowItem(ItemSO _item, bool isEqui = false, bool isShop = false)
     {
+        item = _item;
         // kiểm tra vị trí chuột và hiển thị thông tin tại vị trí chuột
         btnUnequi.SetActive(false);
         btnSell.SetActive(false);
@@ -26,19 +28,19 @@ public class ToolShowItem : MonoBehaviour
         btnUse.SetActive(false);
         btnEqui.SetActive(false);
 
-        txtPrice.text = "" + item._price;
-        txtDes.text =" " + item._description;
+        txtPrice.text = "" + _item._price;
+        txtDes.text =" " + _item._description;
 
-        if (item is ItemData_Equipment)
+        if (_item is ItemData_Equipment)
         {
-            ItemData_Equipment i = (ItemData_Equipment)item;
+            ItemData_Equipment i = (ItemData_Equipment)_item;
 
             
             if (i._level > 0)
                 txtName.text = i._name + " + " + i._level;
             else
                 txtName.text = i._name;
-
+            txtName.color = GameValue.Instance.colorsLevelOfStrength[i._level];
             goIntensify.SetActive(true);
             txtIntensify.gameObject.SetActive(true);
             txtIntensify.text = i.ToString();
@@ -56,8 +58,8 @@ public class ToolShowItem : MonoBehaviour
         }
         else
         {
-            txtName.text = item._name;
-            
+            txtName.text = _item._name;
+            txtName.color = GameValue.Instance.colorsLevelOfStrength[0];
             goIntensify.SetActive(false);
             txtIntensify.gameObject.SetActive(false);
             if (isShop)
@@ -65,7 +67,7 @@ public class ToolShowItem : MonoBehaviour
                 btnSell.SetActive(true);
                 return;
             }
-            if (item.canUse)
+            if (_item.canUse)
             {
                 btnUse.SetActive(true);
             }
@@ -78,7 +80,9 @@ public class ToolShowItem : MonoBehaviour
         {
             case 0:
                 {
-                    Debug.Log("Un");
+                    //Debug.Log("Un");
+                    transform.gameObject.SetActive(false);
+                    GameManager.instance.uiManager.uiShowInforPlayer.Unequenment((item as ItemData_Equipment)._equipmentType);
                     break;
                 }
             case 1:
